@@ -18,8 +18,9 @@
 \usepackage{graphicx}
 \usepackage{todonotes}
 \usepackage{listingsutf8}
+\usepackage[hidelinks]{hyperref}
 \usepackage{cleveref}
-\usepackage[hidelinks]{hyperref,xcolor}
+
 \renewcommand\UrlFont{\color{blue}\rmfamily}
 
 \begin{document}
@@ -28,19 +29,31 @@
 \titlerunning{GeoSPARQL 1.1}
 
 \author{
-    Nicholas J. Car\inst{1,2}\orcidID{0000-0002-8742-7730} \and \\
-    Timo Homburg\inst{3}\orcidID{0000-0002-9499-5840} % \and \\
-    % Third Author\inst{3}\orcidID{2222-3333-4444-5555}
+    Nicholas J. Car\inst{1}\orcidID{0000-0002-8742-7730} \and \\
+    Timo Homburg\inst{2}\orcidID{0000-0002-9499-5840} \and \\
+    Simon J.D Cox\inst{3}\orcidID{0000-0002-3884-3420}
 }
 
 \authorrunning{Car N.J. et al.}
 
-\institute{SURROUND Australia Pty Ltd., Brisbane Australia \and
-Australian National University, Canberra Australia \and Mainz University Of Applied Sciences, Germany
-\email{nicholas.car@surroundaustralia.com, timo.homburg@hs-mainz.de}\\
-\url{https://surroundaustralia.com} \and
-ABC Institute, Rupert-Karls-University Heidelberg, Heidelberg, Germany\\
-\email{\{abc,lncs\}@uni-heidelberg.de}}
+\institute{
+    {
+    SURROUND Australia Pty Ltd., Australia \&\\
+    Australian National University, Australia\\
+    \email{nicholas.car@surroundaustralia.com}\\
+    \url{https://surroundaustralia.com}
+    }
+    \and
+    {
+        Mainz University Of Applied Sciences, Germany\\
+        \email{timo.homburg@hs-mainz.de}
+    }
+    \and 
+    {
+        Commonwealth Scientific \& Industrial Research Organisation, Australia\\
+        \email{simon.cox@csiro.au}
+    }
+}
 
 \maketitle
 
