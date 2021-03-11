@@ -80,18 +80,70 @@ We will also discuss the theory behind updates and our expectations for GeoSPARQ
 \keywords{GeoSPARQL  \and GeoSPARQL 1.1 \and spatial \and geospatial \and Semantic Web \and RDF \and OWL \and OGC \and Open Geospatial Consortuim \and standard.}
 \end{abstract}
 
-\section{Introduction}
-\label{sec:introduction}
-\section{Motivation to Update GeoSPARQL}
-\label{sec:motivation}
-Spatial Data On The Web Best Practices \cite{van2019best}
-GeoSPARQL White Paper \cite{geosparqlwhitepaper}
-\href{https://www.w3.org/2015/spatial/wiki/Further_development_of_GeoSPARQL}{https://www.w3.org/2015/spatial/wiki/Further\_development\_of\_GeoSPARQL}
-\section{New features in GeoSPARQL 1.1}
-\label{sec:newfeatures}
-GeoSPARQL 1.1 includes non-breaking changes to the GeoSPARQL 1.0 standard.
-\subsection{New geometry literals}
-\label{sec:literals}
+\section{Introduction}\label{sec:introduction}
+The GeoSPARQL standard, first issues in 2021 by the Open Geospatial Consortium (OGC)\footnote{\url{https://www.ogc.org}} 
+is one of, if not the most\footnote{It is hard to calculate use but references to GeoSPARQL in papers and other 
+well-known standards, such as DCAT2 (\url{https://www.w3.org/TR/vocab-dcat/}) suggests this}, used 
+\textit{Sematic Web} ontologies for representing spatial data.
+
+The original GeoSPARQL release, which we refere to as GeoSPARQL 1.0, contained a \textit{specification} document,
+a main ``GeoSPARQL'' ontology in an RDF file and a ``Simple Features Vocabulary'' ontology also in an RDF file. The 
+``GeoSPARQL'' ontology content, as well as lists of geospatial functions that could be performed on RDF data via 
+SPARQL\footnote{\url{https://www.w3.org/TR/sparql11-query/}} queries was defined in the specification document, as
+were entailement rules and requirements \& abstract tests for testing ontology data and function implementations. 
+Within the last few years, the function lists from the sepecification were extracted into a SKOS\footnote{\url{https://www.w3.org/TR/skos-reference/}}
+vocabulary.
+
+
+\section{Motivation to update GeoSPARQL}\label{sec:motivation}
+Interest in updating GeoSPARQL had been captured\footnote{\href{https://www.w3.org/2015/spatial/wiki/Further_development_of_GeoSPARQL}{https://www.w3.org/2015/spatial/wiki/Further\_development\_of\_GeoSPARQL}}
+ by the World Wide Web Consortium's (W3C) \textit{Spatial Data On The Web Working Group} (SDWWG)
+when a large body of work was done on \textit{Semantic Web} spatial data around in approximately 2015 - 2017, but 
+no updates to GeoSPARQL were ultimately made by that Working Group.
+
+% Spatial Data On The Web Best Practices \cite{van2019best}
+
+Recently, 2019, the OGC reconstituted a \textit{GeoSPARQL Standards Working Group} (SWG) to update GeoSPARQL. The general 
+motivation for work within the area of GeoSPARQL, that of \textit{Semantic Web} spatial data, and a series of
+fault fixes and proposed extensions to GeoSPARQL 1.0 are captured in an OGC White Paper \cite{geosparqlwhitepaper}. Some,
+but not all, of the SDWWG's proposals are included in the White Paper with the different communities - W3C and OGC - 
+naturally reflecting different desires.
+
+The SWG's charter - it's final scope of work - is also published by the OGC \cite{abhayaratna2020ogc} and this guides 
+the SWG's activities. Specific actions of the SWG and their staging are explained through the use of a publicly-available 
+online task tracking system within the SWG's working online code repository\footnote{}\url{https://github.com/opengeospatial/ogc-geosparql/projects/1}}.
+
+At a high-level, proposed updates to GeoSPARQL by both the SDWWG and the SWG may be categorised as:
+
+% Nick up to here
+
+\begin{itemize}
+    \item small geometry extensions, as predicted in GeoSPARQL 1.0
+    \item class extensions to cater for spatial information in RDF/OWL with more fidelity
+    \item 
+\end{itemize}
+
+
+
+
+
+
+
+
+\section{New features in GeoSPARQL 1.1}\label{sec:newfeatures}
+One of the first actions undertaken by the SWG was to link the GeoSPARQL 1.0 elements through a \textit{profile} 
+declaration, where a profile is a special type of \textit{specification}, as defined by \textit{The Profiles Vocabulary}\cite{atkinson_profiles_2020}. 
+The specific motivation for this was the SWG's recognition that GeoSPARQL 1.0 consisted of multiple parts, not all
+of which were easy to discover and, as a result, some GeoSPARQL users were unaware of some of the resources and some
+resources were accidentally duplicated or partly re-implemented.
+
+The profile declaration will be published by the OGC as a stand-alone resource sometime in mid-2021 along with some 
+updated GeoSPARQL 1.0 resources. Currently, all of the elements of GeoSPARQL 1.0, including the profile declaration, 
+can be found within the SWG's working online repository \footnote{\url{https://github.com/opengeospatial/ogc-geosparql}}.
+
+% GeoSPARQL 1.1 includes non-breaking changes to the GeoSPARQL 1.0 standard.
+
+\subsection{New geometry literals}\label{sec:literals}
 GeoSPARQL 1.1 introduces three new literal types: A GeoJSON\cite{butler2016geojson} literal, a KML\cite{nolan2014keyhole} literal, and a DGGS\cite{sahr1998discrete} WKT Literal.
 \small
 \begin{lstlisting}[caption=GeoJSON literal example,label=lst:geojsonliteral,language=sql,frame=single,basicstyle=\ttfamily]
@@ -100,8 +152,7 @@ GeoSPARQL 1.1 introduces three new literal types: A GeoJSON\cite{butler2016geojs
 \end{lstlisting}
 \normalsize
 Since the GeoJSON and KML formats are restricted to be represented in the WGS84 coordinate system only, these restrictions also apply to GeoJSON and KML literals. The DGGS WKT literal  
-\subsection{Spatial aggregate functions}
-\label{sec:spatialaggregate}
+\subsection{Spatial aggregate functions}\label{sec:spatialaggregate}
 GeoSPARQL 1.1 includes new spatial aggregate functions, which allow for the quick aggregation of different geometry types. While spatial aggregate functions are the norm in many non-semantic geospatial databases such as POSTGIS or Oracle Spatial, at the time of defining the GeoSPARQL 1.0 standard, aggregate functions had not yet been introduced into the SPARQL standard since SPARQL 1.1 \cite{w3c_sparql_working_group_sparql_2013} was released about one year later. Spatial aggregate functions similar to traditional aggregate functions such as AVG,MAX, or MIN allow to aggregate results of geometry queries, e.g., to create the union out of a set of given geometry literal results. While calculating these aggregates may also be possible outside of the semantic database, the inclusion of the functions provides distinct advantages:
 \begin{enumerate}
     \item No client-side library is needed to create an aggregated geometry result
@@ -110,8 +161,9 @@ GeoSPARQL 1.1 includes new spatial aggregate functions, which allow for the quic
 \end{enumerate}
 GeoSPARQL 1.1 defines the aggregate functions \emph{geosf:boundingCircle}, calculating a bounding circle around a set of geometry, \emph{geosf:centroid} calculating the centroid of the set of geometries, \emph{geosf:concatLines} concatenating a set of linestrings that overlap, \emph{geosf:concaveHull} calculating the concave hull of a set of geometries and\emph{geosf:union}, calculating the union of a set of geometreis, in addition to the \emph{geosf:envelope} and \emph{geosf:convexHull} functions already defined in the GeoSPARQL 1.0 standard. Since SPARQL 1.1 these fucntions were also usable as aggregate functions.
 Spatial aggregate function definitions are accompanied by the functions \href{http://www.opengis.net/def/function/geosparql/maxX}{\emph{geof:maxX}}, \href{http://www.opengis.net/def/function/geosparql/maxY}{\emph{geof:maxY}}, \href{http://www.opengis.net/def/function/geosparql/maxZ}{\emph{geof:maxZ}} and \href{http://www.opengis.net/def/function/geosparql/minX}{\emph{geof:minX}}, \href{http://www.opengis.net/def/function/geosparql/minY}{\emph{geof:minY}}, \href{http://www.opengis.net/def/function/geosparql/minZ}{\emph{geof:minZ}} which allow to retrieve the minimum and maximum coordinates of a geometry respectively.
-\subsection{Extensions of the GeoSPARQL ontology}
-\label{sec:ontologyextensions}
+
+
+\subsection{Extensions of the GeoSPARQL ontology}\label{sec:ontologyextensions}
 GeoSPARQL 1.1 extends the GeoSPARQL ontology by adding a new class \href{http://www.opengis.net/ont/geosparql#SpatialMeasure}{geo:SpatialMeasure}. This class represents a measurement such as a volume, length, or area associated with a measurement amount and a measurement unit. It acts as a range of three newly defined properties \href{http://www.opengis.net/ont/geosparql#hasVolume}{geo:hasArea}, \href{http://www.opengis.net/ont/geosparql#hasLength}{geo:hasLength},
 \href{http://www.opengis.net/ont/geosparql#hasVolume}{geo:hasVolume} which make these attributes of a geometry better accessible using SPARQL. Finally, GeoSPARQL 1.1 adds the \href{http://www.opengis.net/ont/geosparql#inCRS}{geo:inCRS} property, which allows querying the coordinate reference system of a given geometry without the need to analyze geometry literal serializations. The property allows for the definition of a CRS as a URI. It paves the way for a future definition of coordinate reference systems fully in RDF as anticipated for GeoSPARQL 2.0.
 \todo[inline]{I created a graphic (geold\_ontology.graphml) containing geo:SpatialObject, geo:Feature, geo:SpatialMeasure using the yEd Editor (https://www.yworks.com/products/yed) . If you find it useful we can extend it. }
@@ -121,14 +173,17 @@ GeoSPARQL 1.1 extends the GeoSPARQL ontology by adding a new class \href{http://
     \caption{GeoSPARQL 1.1 ontology including one example feature}
     \label{fig:geosparql11ontology}
 \end{figure}
-\section{Modernizing the documentation of GeoSPARQL}
-\label{sec:documentation}
-\subsection{Profile}
-\label{sec:profile}
-\section{Conclusions}
-\label{sec:conclusions}
-\subsection{Future Work}
-\label{sec:futurework}
+
+
+\section{Modernizing the documentation of GeoSPARQL}\label{sec:documentation}
+
+
+\subsection{Profile}\label{sec:profile}
+
+
+\section{Conclusions}\label{sec:conclusions}
+
+\subsection{Future Work}\label{sec:futurework}
 GeoSPARQL 1.2, GeoSPARQL 2.0?
 \begin{itemize}
     \item GeoSPARQL extension ontologies: CRS systems
@@ -148,76 +203,7 @@ GeoSPARQL 1.2, GeoSPARQL 2.0?
 % Section 5
 %       expected changed use modes
 
-\section{First Section}
-\subsection{A Subsection Sample}
-Please note that the first paragraph of a section or subsection is
-not indented. The first paragraph that follows a table, figure,
-equation etc. does not need an indent, either.
 
-Subsequent paragraphs, however, are indented.
-
-\subsubsection{Sample Heading (Third Level)} Only two levels of
-headings should be numbered. Lower level headings remain unnumbered;
-they are formatted as run-in headings.
-
-\paragraph{Sample Heading (Fourth Level)}
-The contribution should contain no more than four levels of
-headings. Table~\ref{tab1} gives a summary of all heading levels.
-
-\begin{table}
-\caption{Table captions should be placed above the
-tables.}\label{tab1}
-\begin{tabular}{|l|l|l|}
-\hline
-Heading level &  Example & Font size and style\\
-\hline
-Title (centered) &  {\Large\bfseries Lecture Notes} & 14 point, bold\\
-1st-level heading &  {\large\bfseries 1 Introduction} & 12 point, bold\\
-2nd-level heading & {\bfseries 2.1 Printing Area} & 10 point, bold\\
-3rd-level heading & {\bfseries Run-in Heading in Bold.} Text follows & 10 point, bold\\
-4th-level heading & {\itshape Lowest Level Heading.} Text follows & 10 point, italic\\
-\hline
-\end{tabular}
-\end{table}
-
-
-\noindent Displayed equations are centered and set on a separate
-line.
-\begin{equation}
-x + y = z
-\end{equation}
-Please try to avoid rasterized images for line-art diagrams and
-schemas. Whenever possible, use vector graphics instead (see
-Fig.~\ref{fig1}).
-
-\begin{figure}
-\includegraphics[width=\textwidth]{fig1.eps}
-\caption{A figure caption is always placed below the illustration.
-Please note that short captions are centered, while long ones are
-justified by the macro package automatically.} \label{fig1}
-\end{figure}
-
-\begin{theorem}
-This is a sample theorem. The run-in heading is set in bold, while
-the following text appears in italics. Definitions, lemmas,
-propositions, and corollaries are styled the same way.
-\end{theorem}
-%
-% the environments 'definition', 'lemma', 'proposition', 'corollary',
-% 'remark', and 'example' are defined in the LLNCS documentclass as well.
-%
-\begin{proof}
-Proofs, examples, and remarks have the initial word in italics,
-while the following text appears in normal font.
-\end{proof}
-For citations of references, we prefer the use of square brackets
-and consecutive numbers. Citations using labels or the author/year
-convention are also acceptable. The following bibliography provides
-a sample reference list with entries for journal
-articles~\cite{gonzalez-beltran_data_2018}, an LNCS chapter~\cite{gregory_todd_williams_sparql_2013}, a
-book~\cite{ref_book1}, proceedings without editors~\cite{knublauch_shapes_2017},
-and a homepage~\cite{knublauch_shapes_2017}. Multiple citations are grouped
-\cite{gonzalez-beltran_data_2018,gregory_todd_williams_sparql_2013,knublauch_shapes_2017}.
 %
 % ---- Bibliography ----
 %
