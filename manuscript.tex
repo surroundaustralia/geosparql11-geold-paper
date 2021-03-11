@@ -178,32 +178,50 @@ resources were accidentally duplicated or partly re-implemented. Profile declara
 as being the \textit{best practice} way for it to deliver multi-part standards.
 
 The profile declaration for GeosPARQL 1.0 will be published by the OGC as a stand-alone resource sometime in early 2021 along with some 
-updated GeoSPARQL 1.0 resources. Currently, all of the elements of GeoSPARQL 1.0, including the profile declaration, 
-can be found within the SWG's working online repository \footnote{\url{https://github.com/opengeospatial/ogc-geosparql}}.
-The profile declaration for GeosPARQL 1.1 will be published at the same time as all, or most, of the 1.1 releases' updated
-resources, currently expected in mid-2021.
-
-\subsection{New geometry literals}\label{sec:newliterals}
-GeoSPARQL 1.1 introduces three new litergeometry serializations: 
+updated GeoSPARQL 1.0 resources. The profile declaration for GeosPARQL 1.1 will be published at the same time as all, or most, of the 
+1.1 releases' updated resources, currently expected in mid-2021. The 1.1 releases' resources are:
 
 \begin{enumerate}
-    \item GeoJSON (Geo- JavaScript Object Notation)\cite{butler2016geojson}
-    \item KML (Keyhole Markup Language)\cite{nolan2014keyhole} 
-    \item DGGS (Discrete Global Grid System)\cite{sahr1998discrete}
+    \item a profile declaration
+    \item a specification document
+    \item an RDF/OWL ontology document
+    \item a Functions \& Rules vocabulary, derived from the ontology
+    \item a Simple Features feature types vocabulary
+    \item a set of RIF\cite{kifer2013rif} rules
+    \item SHACL\cite{knublauch_shapes_2017} shapes for RDF data validation 
+\end{enumerate}
+
+
+Both the 1.0 and the 1.1 resources are currently avaialbe from the SWG's online code repository\footnote{\url{https://github.com/opengeospatial/ogc-geosparql}}.
+
+
+\subsection{New geometry literals}\label{sec:newliterals}
+Three new geometry serializations are introduced: 
+
+\begin{enumerate}
+    \item \textbf{GeoJSON} (Geo- JavaScript Object Notation)\cite{butler2016geojson}
+    \item \textbf{KML} (Keyhole Markup Language)\cite{nolan2014keyhole} 
+    \item \textbf{DGGS} (Discrete Global Grid System)\cite{sahr1998discrete}
 \end{enumerate} 
 
-The first two of these are ``obvious'' in the sence that that they have been expected/requested by the SDWWG and many users
-of GeoSPARQL for a long time, due to those format's popularity. an example of a GeoJSON geometry serialization is given below.
+An example of a point's GeoJSON geometry serialization is given below, followed by an unrelated simple polygon \textit{AusPIX}
+\footnote{\url{https://w3id.org/dggs/auspix}} DGGS geometry serialization.
 
 \small
-\begin{lstlisting}[caption=GeoJSON geometry serialization example,label=lst:geojsonliteral,language=sql,frame=single,basicstyle=\ttfamily]
+\begin{lstlisting}[caption=GeoJSON geometry serialization example,label=lst:geojsonliteral,language=sql,frame=single,basicstyle=\ttfamily,showstringspaces=false]
 """{"type":"Point", "coordinates":[-83.38,33.95]}"""
 ^^<http://www.opengis.net/ont/geosparql#geoJSONLiteral>
 \end{lstlisting}
-\normalsize
-Since the GeoJSON and KML formats are restricted to be represented in the WGS84 SRS only, these restrictions 
-also apply to GeoJSON and KML literals. The DGGS WKT literal  
 
+\begin{lstlisting}[caption=AusPIX DGGS geometry serialization example,label=lst:geodggsWktliteral,language=sql,frame=single,basicstyle=\ttfamily,showstringspaces=false]
+"""<https://w3id.org/dggs/auspix> DirectedOrdinateList 
+(R3231 R3234 R3235 R3238 R3243 R3246)"""
+^^<http://www.opengis.net/ont/geosparql#dggsWktLiteral>
+\end{lstlisting}
+\normalsize
+
+The first two of these new serializations have been much anticipated and were requested by the SDWWG and many users of 
+GeoSPARQL, due to those formats' popularity.
 
 The third new serialization format is more forward-looking in that it is not dirven by user demand but by predected demand.
 DGGS does not have a single, concrete format standard as the others do, not is it ever likely to - different DGGSes will 
@@ -211,41 +229,53 @@ likely implement very different data formats - so GeoSAPRQL 1.1 makes generalize
 presents no detailed requirements for them, only stating that the specific DGGS must be identified.
 
 \subsection{New spatial functions}\label{sec:newfunctions}
-GeoSPARQL 1.1 includes new spatial aggregate functions, which allow for the quick aggregation of different geometry types. 
-While spatial aggregate functions are the norm in many non-semantic geospatial databases such as POSTGIS or Oracle Spatial, 
-at the time of defining the GeoSPARQL 1.0 standard, aggregate functions had not yet been introduced into the SPARQL standard 
-since SPARQL 1.1 \cite{w3c_sparql_working_group_sparql_2013} was released about one year later. Spatial aggregate functions 
-similar to traditional aggregate functions such as AVG,MAX, or MIN allow to aggregate results of geometry queries, e.g., to 
-create the union out of a set of given geometry literal results. While calculating these aggregates may also be possible 
-outside of the semantic database, the inclusion of the functions provides distinct advantages:
+While spatial aggregation functions are the norm in many non-semantic geospatial databases such as POSTGIS or Oracle Spatial, 
+at the time of defining the GeoSPARQL 1.0 standard, aggregation functions had not yet been introduced into the SPARQL standard,
+but have been since with SPARQL 1.1~\cite{w3c_sparql_working_group_sparql_2013}. Spatial aggregation functions 
+similar to traditional (relation database) aggregation functions such as AVG, MAX, or MIN allow aggregated results of geometry 
+queries, for example to create the union of a set of selected serialized geometries. While calculating these aggregates is 
+certainly possible outside of a semantic database, and thus GeoSPARQL, the inclusion of the functions provides distinct advantages:
 
 \begin{enumerate}
     \item No client-side library is needed to create an aggregated geometry result
-    \item Fewer and more appropriate results can be returned using a spatial aggregate function (e.g., a single union geometry vs. a set of geometries for which to create union externally)
+    \item Fewer and more appropriate results can be returned using a spatial aggregate function (for example, a union geometry result)
     \item Spatial aggregates from different SPARQL endpoints can easily be calculated using federated queries 
 \end{enumerate}
 
-GeoSPARQL 1.1 defines the aggregate functions \emph{geosf:boundingCircle}, calculating a bounding circle around a set of 
-geometry, \emph{geosf:centroid} calculating the centroid of the set of geometries, \emph{geosf:concatLines} concatenating 
-a set of linestrings that overlap, \emph{geosf:concaveHull} calculating the concave hull of a set of geometries and\emph{geosf:union}, 
-calculating the union of a set of geometreis, in addition to the \emph{geosf:envelope} and \emph{geosf:convexHull} functions 
-already defined in the GeoSPARQL 1.0 standard. Since SPARQL 1.1 these fucntions were also usable as aggregate functions.
+In addition to the \emph{geosf:union}, \emph{geosf:envelope} and \emph{geosf:convexHull} functions already defined in GeoSPARQL 1.0, 
+for use within SPARQL \texttt{FILTER} operations, GeoSPARQL 1.1 defines \emph{geosf:Union}, \emph{geosf:Envelope} and \emph{geosf:ConvexHull}
+as well as \emph{geosf:BoundingCircle}, \emph{geosf:Centroid}, \emph{geosf:ConcatLines} - concatenating a set of overlapping linestrings 
+that overlap - and \emph{geosf:ConcaveHull} that can be used to return aggregated results. Listing~\ref{lst:agfunc} gives an example 
+of one of these new functions in use.
 
-Spatial aggregate function definitions are accompanied by the functions \href{http://www.opengis.net/def/function/geosparql/maxX}{\emph{geof:maxX}}, 
-\href{http://www.opengis.net/def/function/geosparql/maxY}{\emph{geof:maxY}}, \href{http://www.opengis.net/def/function/geosparql/maxZ}{\emph{geof:maxZ}} 
-and \href{http://www.opengis.net/def/function/geosparql/minX}{\emph{geof:minX}}, \href{http://www.opengis.net/def/function/geosparql/minY}{\emph{geof:minY}}, 
-\href{http://www.opengis.net/def/function/geosparql/minZ}{\emph{geof:minZ}} which allow to retrieve the minimum and maximum 
-coordinates of a geometry respectively.
+\small
+\begin{lstlisting}[caption=Aggregation Function example SPARQL query,label=lst:agfunc,language=sql,frame=single,basicstyle=\ttfamily,showstringspaces=false]
+# returns the circle geometry bounding all the geometries 
+# of Feature <x>
+SELECT (geosaf:BoundingCircle(?geo) AS ?circ)
+WHERE {
+    <x> geo:hasGeometry/geo:asWKT ?geo .
+}
+\end{lstlisting}
+\normalsize
+
+New functions to retieve the minimum and maximum values of geometries' coordinates are also added: \emph{geof:minX} \& \emph{geof:maxX},
+\emph{geof:minY} \& \emph{geof:maxY} and \emph{geof:minZ} \& \emph{geof:maxZ}.
 
 \subsection{Ontology extensions}\label{sec:ontexts}
-GeoSPARQL 1.1 extends the GeoSPARQL ontology by adding a new class \href{http://www.opengis.net/ont/geosparql#SpatialMeasure}{geo:SpatialMeasure}. 
-This class represents a measurement such as a volume, length, or area associated with a measurement amount and a measurement 
-unit. It acts as a range of three newly defined properties \href{http://www.opengis.net/ont/geosparql#hasVolume}{geo:hasArea}, 
-\href{http://www.opengis.net/ont/geosparql#hasLength}{geo:hasLength}, \href{http://www.opengis.net/ont/geosparql#hasVolume}{geo:hasVolume} 
-which make these attributes of a geometry better accessible using SPARQL. Finally, GeoSPARQL 1.1 adds the 
-\href{http://www.opengis.net/ont/geosparql#inSRS}{geo:inSRS} property, which allows querying the SRS of a given geometry 
-without the need to analyze geometry literal serializations. The property allows for the definition of a SRS as a URI. It 
-paves the way for a future definition of SRS fully in RDF as anticipated for GeoSPARQL 2.0.
+GeoSPARQL 1.1 extends the GeoSPARQL ontology by adding a new class, \texttt{geo:SpatialMeasure}. This class represents a spatial measurement 
+such as a volume, length, or area associated with a measurement amount and a unit of measure. It is the range of three newly-defined properties:
+\texttt{geo:hasArea}, \texttt{geo:hasLength} and \texttt{geo:hasVolume} which make these attributes of a geometry better accessible using 
+SPARQL. 
+
+These additions address a number of change requests from the SDWWG and the SWG but, given the introduction of a dedicated \textit{measure} class, 
+the do more than just provide for a few scalar spatial measures and open up GeoSPARQL to general patterns of measurement present in ontologies 
+such as the W3C's \textit{SOSA}~\cite{haller_semantic_2017}.
+
+The 1.1 release also adds the property \texttt{geo:inSRS}, which allows querying for the SRS of a given geometry without the need to analyze 
+geometry serializations. The property allows for the definition of a SRS as an Internationalized Resource Identifier (IRI). It paves the way 
+for a future definition of SRS fully in RDF, as anticipated for GeoSPARQL 2.0. Figure~\ref{fig:geosparql11ontology} overviews the ontology, as 
+of release 1.1.
 
 \begin{figure}[htb]
     \centering
@@ -253,13 +283,6 @@ paves the way for a future definition of SRS fully in RDF as anticipated for Geo
     \caption{GeoSPARQL 1.1 ontology including one example feature}
     \label{fig:geosparql11ontology}
 \end{figure}
-
-
-\section{Modernizing the documentation of GeoSPARQL}\label{sec:documentation}
-
-
-\subsection{Profile}\label{sec:profile}
-
 
 \section{Conclusions}\label{sec:conclusions}
 
