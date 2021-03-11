@@ -62,7 +62,7 @@ presentation.\\
 In this paper, we will discuss the submitted change requests and resulting updates to the standard. 
 We will also discuss the theory behind updates and our expectations for GeoSPARQL 1.1's use.
 
-\keywords{GeoSPARQL  \and GeoSPARQL 1.1 \and spatial \and geospatial \and Semantic Web \and RDF \and OWL \and OGC \and Open Geospatial Consortuim \and standard.}
+\keywords{GeoSPARQL  \and GeoSPARQL 1.1 \and spatial \and geospatial \and Semantic Web \and RDF \and OWL \and OGC \and Open Geospatial Consortium \and standard.}
 \end{abstract}
 
 \section{Introduction}\label{sec:introduction}
@@ -71,12 +71,12 @@ is one of, if not the most\footnote{It's hard to calculate use but references to
 such as DCAT2 (\url{https://www.w3.org/TR/vocab-dcat/}) suggests this}, used \textit{Sematic Web} ontologies for 
 representing spatial data.
 
-The original GeoSPARQL release, which we refere to as GeoSPARQL 1.0, contained a \textit{specification} document,
+The original GeoSPARQL release, which we refer to as GeoSPARQL 1.0, contained a \textit{specification} document,
 a main ``GeoSPARQL'' ontology in an RDF file and a ``Simple Features Vocabulary'' ontology also in an RDF file. The 
 ``GeoSPARQL'' ontology content, as well as lists of geospatial functions that could be performed on RDF data via 
 SPARQL\footnote{\url{https://www.w3.org/TR/sparql11-query/}} queries was defined in the specification document, as
-were entailement rules and requirements \& abstract tests for testing ontology data and function implementations. 
-Within the last few years, the function lists from the sepecification were extracted into a SKOS\footnote{\url{https://www.w3.org/TR/skos-reference/}}
+were entailment rules and requirements \& abstract tests for testing ontology data and function implementations. 
+Within the last few years, the function lists from the specification were extracted into a SKOS\footnote{\url{https://www.w3.org/TR/skos-reference/}}
 vocabulary.
 
 
@@ -91,10 +91,10 @@ no updates to GeoSPARQL were ultimately made by that Working Group.
 Recently, 2019, the OGC reconstituted a \textit{GeoSPARQL Standards Working Group} (SWG) to update GeoSPARQL. The general 
 motivation for work within the area of GeoSPARQL, that of \textit{Semantic Web} spatial data, and a series of
 fault fixes and proposed extensions to GeoSPARQL 1.0 are captured in an OGC White Paper \cite{geosparqlwhitepaper}. Some,
-but not all, of the SDWWG's proposals are included in the White Paper with the different communities - W3C and OGC - 
+but not all of the SDWWG's proposals are included in the White Paper with the different communities - W3C and OGC - 
 naturally reflecting different desires.
 
-The SWG's charter - it's final scope of work - is also published by the OGC \cite{abhayaratna2020ogc} and this guides 
+The SWG's charter - its final scope of work - is also published by the OGC \cite{abhayaratna2020ogc} and this guides 
 the SWG's activities. Specific actions of the SWG and their staging are explained through the use of a publicly-available 
 online task tracking system within the SWG's working online code repository\footnote{\url{https://github.com/opengeospatial/ogc-geosparql/projects/1}}.
 
@@ -121,7 +121,7 @@ At a high-level, proposed updates to GeoSPARQL by both the SDWWG and the SWG may
     \item[$\ast$] Internet protocol-based selection of different geometries for features
 \end{itemize}
 
-Some of these propsed updates were predicted in GeoSPARQL 1.0 with the \textit{Future Work} section listing several of the 
+Some of these proposed updates were predicted in GeoSPARQL 1.0, with the \textit{Future Work} section listing several of the 
 points above as expected or potential.
 
 The SWG's \textit{Charter}, anticipating that the more obvious updates such as new geometry serializations would certainly
@@ -130,16 +130,16 @@ be implemented, listed the following areas of investigation that emerged from SW
 \begin{itemize}
     \item[$\ast$] a revision of the ``upper  ontology'' structuring of GeoSPARQL
     \begin{itemize}
-        \item[$-$] better/differently defining how GeoSPARQL's \texttt{Feature} and other classes relate to one another and to other fundamental concepts in ontology
+        \item[$-$] better/differently defining how GeoSPARQL's \texttt{Feature} and other classes relate to one another and to other fundamental concepts in the ontology
     \end{itemize} 
     \item[$\ast$] possible alignments to other ontologies, perhaps the \textit{W3C Time Ontology in OWL}\cite{simon_cox_time_2017}
     \item[$\ast$] catering for new and very different SRSes, such as Discrete Global Grid Systems (DGGS) 
 \end{itemize}
 
 Specifically ruled out of scope was any investigation of property graphs. Recent (last several years) discussion in the OGC and 
-elsewere about property graphs moticated a consideration of them, hoever the SWG proponents felt that while property graphs might 
+elsewhere about property graphs motivated a consideration of them, however, the SWG proponents felt that while property graphs might 
 be important for future \textit{Semantic Web} spatial data systems, there was more than enough work scoped for initial SWG work
-(several revisions of the standard) to initially exclude this are of investigation.
+(several revisions of the standard) to initially exclude this area of investigation.
 
 After initial meetings, the SWG determined to make multiple releases of GeoSPARQL updates with different goals:
 
@@ -149,23 +149,23 @@ After initial meetings, the SWG determined to make multiple releases of GeoSPARQ
     \item[$\ast$] \textbf{2.0}: a future GeoSPARQL that might be quite different and partly incompatable with GeoSPARQL 1.0
 \end{itemize} 
 
-The reason for expecting a future, incompatable, GeoSPARQL 2.0 is that early SWG attendees thought spatio-temporal relations
-and fundamental ontology elements in GeoSPARQL either could or should be remodelled which might break the current, familiar, 
+The reason for expecting a future, incompatible, GeoSPARQL 2.0 is that early SWG attendees thought spatio-temporal relations
+and fundamental ontology elements in GeoSPARQL either could or should be remodelled, which might break the current, familiar, 
 \texttt{Feature}/\texttt{Geometry} class relations. Details of these potential changes haven't been fully expounded, at the 
 time of this paper, however initial SWG attendees' intuition is that a future GeoSPARQL 2.0 might generalise spatial concepts and
 move away from only, or primarily, \textit{geo}spatial, or perhaps focus not just on \texttt{Feature}/\texttt{Geometry} relations
 but look to generalised mechanisms for describing dimensions of features of which \textit{geometry} is one of many (and perhaps)
 \textit{temporality} too).
 
-An additional area of updates to GeoSPARQL that was not forseen by GeoSPARQL 1.0, the SDWWG or the initial proponants of the SWG
-but which was included by the early SWG attendees in GeosPARQL 1.1 and is now present in the SWG's working repository was that 
+An additional area of updates to GeoSPARQL that was not foreseen by GeoSPARQL 1.0, the SDWWG, or the initial proponents of the SWG
+but which was included by the early SWG attendees in GeoSPARQL 1.1 and is now present in the SWG's working repository was that 
 of new modes of standard presentation. The motivation for this was conceptual work within the W3C and the OGC to do with how 
 multi-part standards might link their parts and declare dependencies. This resulted in the profile declaration work, explained 
 in the next section.
 
 
 \section{Updates in GeoSPARQL 1.1}\label{sec:newfeatures}
-So far (as of June, 2020) the GeoSPARQL SWG has triarged changed requests into GeoSPARQL 1.1, 1.2 \$ 2.0 releases and has addressed
+So far (as of June, 2020) the GeoSPARQL SWG has triaged changed requests into GeoSPARQL 1.1, 1.2 \$ 2.0 releases and has addressed
 many 1.1 requests. Here we report only on those 1.1 requests. This section describes some of the areas updated in GeoSAPRQL 1.1
 and the following section foreshadows likely 1.2 and 2.0 updates.
 
@@ -173,7 +173,7 @@ and the following section foreshadows likely 1.2 and 2.0 updates.
 One of the first actions undertaken by the SWG was to link the GeoSPARQL 1.0 elements through a \textit{profile} 
 declaration, where a profile is a special type of \textit{specification}, as defined by \textit{The Profiles Vocabulary}\cite{atkinson_profiles_2020}. 
 The specific motivation for this was the SWG's recognition that GeoSPARQL 1.0 consisted of multiple parts, not all
-of which were easy to discover and, as a result, some GeoSPARQL users were unaware of some of the resources and some
+of which were easy to discover. As a result, some GeoSPARQL users were unaware of some of the resources and some
 resources were accidentally duplicated or partly re-implemented. Profile declarations of this sort are anticipated, by the OGC, 
 as being the \textit{best practice} way for it to deliver multi-part standards.
 
@@ -192,7 +192,7 @@ updated GeoSPARQL 1.0 resources. The profile declaration for GeosPARQL 1.1 will 
 \end{enumerate}
 
 
-Both the 1.0 and the 1.1 resources are currently avaialbe from the SWG's online code repository\footnote{\url{https://github.com/opengeospatial/ogc-geosparql}}.
+Both the 1.0 and the 1.1 resources are currently available from the SWG's online code repository\footnote{\url{https://github.com/opengeospatial/ogc-geosparql}}.
 
 
 \subsection{New geometry literals}\label{sec:newliterals}
@@ -223,8 +223,8 @@ An example of a point's GeoJSON geometry serialization is given below, followed 
 The first two of these new serializations have been much anticipated and were requested by the SDWWG and many users of 
 GeoSPARQL, due to those formats' popularity.
 
-The third new serialization format is more forward-looking in that it is not dirven by user demand but by predected demand.
-DGGS does not have a single, concrete format standard as the others do, not is it ever likely to - different DGGSes will 
+The third new serialization format is more forward-looking in that it is not driven by user demand but by predicted demand.
+DGGS does not have a single, concrete format standard as the others do, nor is it ever likely to - different DGGSes will 
 likely implement very different data formats - so GeoSAPRQL 1.1 makes generalized provisions for DGGS serializations but 
 presents no detailed requirements for them, only stating that the specific DGGS must be identified.
 
@@ -232,8 +232,8 @@ presents no detailed requirements for them, only stating that the specific DGGS 
 While spatial aggregation functions are the norm in many non-semantic geospatial databases such as POSTGIS or Oracle Spatial, 
 at the time of defining the GeoSPARQL 1.0 standard, aggregation functions had not yet been introduced into the SPARQL standard,
 but have been since with SPARQL 1.1~\cite{w3c_sparql_working_group_sparql_2013}. Spatial aggregation functions 
-similar to traditional (relation database) aggregation functions such as AVG, MAX, or MIN allow aggregated results of geometry 
-queries, for example to create the union of a set of selected serialized geometries. While calculating these aggregates is 
+similar to traditional (relation database), aggregation functions such as AVG, MAX, or MIN allow aggregated results of geometry 
+queries, for example, to create the union of a set of selected serialized geometries. While calculating these aggregates is 
 certainly possible outside of a semantic database, and thus GeoSPARQL, the inclusion of the functions provides distinct advantages:
 
 \begin{enumerate}
@@ -242,12 +242,12 @@ certainly possible outside of a semantic database, and thus GeoSPARQL, the inclu
     \item Spatial aggregates from different SPARQL endpoints can easily be calculated using federated queries 
 \end{enumerate}
 
-In addition to the \emph{geosf:union}, \emph{geosf:envelope} and \emph{geosf:convexHull} functions already defined in GeoSPARQL 1.0, 
+In addition to the \href{http://www.opengis.net/def/function/geosparql/union}{\emph{geof:union}}, \href{http://www.opengis.net/def/function/geosparql/envelope}{\emph{geof:envelope}} and \href{http://www.opengis.net/def/function/geosparql/convexHull}{\emph{geof:convexHull}} functions already defined in GeoSPARQL 1.0, 
 for use within SPARQL \texttt{FILTER} operations, GeoSPARQL 1.1 defines \emph{geosf:Union}, \emph{geosf:Envelope} and \emph{geosf:ConvexHull}
 as well as \emph{geosf:BoundingCircle}, \emph{geosf:Centroid}, \emph{geosf:ConcatLines} - concatenating a set of overlapping linestrings 
 that overlap - and \emph{geosf:ConcaveHull} that can be used to return aggregated results. Listing~\ref{lst:agfunc} gives an example 
 of one of these new functions in use.
-
+\todo[inline]{Timo: I will create a pull request in the GeoSPARQL repository to clear up the issues concerning the spatial aggregate functions. Then I will update the namespaces here. I would find it nice to also include the functions we have discussed yesterday: transformation of SRS and in between literal formats. Should we mention it here as future work or should we make a draft pull request for that so that people have a reference? I think the latter}
 \small
 \begin{lstlisting}[caption=Aggregation Function example SPARQL query,label=lst:agfunc,language=sql,frame=single,basicstyle=\ttfamily,showstringspaces=false]
 # returns the circle geometry bounding all the geometries 
@@ -259,20 +259,20 @@ WHERE {
 \end{lstlisting}
 \normalsize
 
-New functions to retieve the minimum and maximum values of geometries' coordinates are also added: \emph{geof:minX} \& \emph{geof:maxX},
-\emph{geof:minY} \& \emph{geof:maxY} and \emph{geof:minZ} \& \emph{geof:maxZ}.
+New functions to retrieve the minimum and maximum values of geometries' coordinates are also added: \href{http://www.opengis.net/def/function/geosparql/minX}{\emph{geof:minX}} \& \href{http://www.opengis.net/def/function/geosparql/maxX}{\emph{geof:maxX}},
+\href{http://www.opengis.net/def/function/geosparql/minY}{\emph{geof:minY}} \& \href{http://www.opengis.net/def/function/geosparql/maxY}{\emph{geof:maxY}} and \href{http://www.opengis.net/def/function/geosparql/minZ}{\emph{geof:minZ}} \& \href{http://www.opengis.net/def/function/geosparql/maxZ}{\emph{geof:maxZ}}.
 
 \subsection{Ontology extensions}\label{sec:ontexts}
-GeoSPARQL 1.1 extends the GeoSPARQL ontology by adding a new class, \texttt{geo:SpatialMeasure}. This class represents a spatial measurement 
+GeoSPARQL 1.1 extends the GeoSPARQL ontology by adding a new class, \href{http://www.opengis.net/ont/geosparql#SpatialMeasure}{\texttt{geo:SpatialMeasure}}. This class represents a spatial measurement 
 such as a volume, length, or area associated with a measurement amount and a unit of measure. It is the range of three newly-defined properties:
-\texttt{geo:hasArea}, \texttt{geo:hasLength} and \texttt{geo:hasVolume} which make these attributes of a geometry better accessible using 
+\href{http://www.opengis.net/ont/geosparql#hasArea}{\texttt{geo:hasArea}}, \href{http://www.opengis.net/ont/geosparql#hasLength}{\texttt{geo:hasLength}} and \href{http://www.opengis.net/ont/geosparql#hasVolume}{\texttt{geo:hasVolume}} which make these attributes of a geometry better accessible using 
 SPARQL. 
 
 These additions address a number of change requests from the SDWWG and the SWG but, given the introduction of a dedicated \textit{measure} class, 
 the do more than just provide for a few scalar spatial measures and open up GeoSPARQL to general patterns of measurement present in ontologies 
 such as the W3C's \textit{SOSA}~\cite{haller_semantic_2017}.
 
-The 1.1 release also adds the property \texttt{geo:inSRS}, which allows querying for the SRS of a given geometry without the need to analyze 
+The 1.1 release also adds the property \href{http://www.opengis.net/def/function/geosparql/inSRS}{\texttt{geo:inSRS}}, which allows querying for the SRS of a given geometry without the need to analyze 
 geometry serializations. The property allows for the definition of a SRS as an Internationalized Resource Identifier (IRI). It paves the way 
 for a future definition of SRS fully in RDF, as anticipated for GeoSPARQL 2.0. Figure~\ref{fig:geosparql11ontology} overviews the ontology, as 
 of release 1.1.
@@ -301,7 +301,7 @@ GeoSPARQL 1.2, GeoSPARQL 2.0?
 %       motivation, and expected use, of new spatial functions. In particular, why in GeoSPARQL when aggregations etc. can be performed elsewhere?
 %       Spatial Measure
 % Section 4
-%       new profile preentation
+%       new profile presentation
 %       new URI regimes etc
 % Section 5
 %       expected changed use modes
@@ -353,7 +353,7 @@ GeoSPARQL 1.2, GeoSPARQL 2.0?
 %       motivation, and expected use, of new spatial functions. In particular, why in GeoSPARQL when aggregations etc. can be performed elsewhere?
 %       Spatial Measure
 % Section 4
-%       new profile preentation
+%       new profile presentation
 %       new URI regimes etc
 % Section 5
 %       expected changed use modes
