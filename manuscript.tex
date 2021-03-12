@@ -15,49 +15,48 @@
 
 \author{
     Nicholas J. Car\inst{1}\orcidID{0000-0002-8742-7730} \and \\
-    Timo Homburg\inst{2}\orcidID{0000-0002-9499-5840} \and \\
-    Simon J.D Cox\inst{3}\orcidID{0000-0002-3884-3420}
+    Timo Homburg\inst{2}\orcidID{0000-0002-9499-5840}\\
+%    Simon J.D Cox\inst{3}\orcidID{0000-0002-3884-3420}
 }
 
 \authorrunning{Car N.J. et al.}
 
 \institute{
     {
-    SURROUND Australia Pty Ltd., Australia \&\\
+    %SURROUND Australia Pty Ltd., Australia \&\\
     Australian National University, Australia\\
     \email{nicholas.car@surroundaustralia.com}\\
-    \url{https://surroundaustralia.com}
+    %\url{https://surroundaustralia.com}
     }
     \and
     {
         Mainz University Of Applied Sciences, Germany\\
         \email{timo.homburg@hs-mainz.de}
     }
-    \and 
-    {
-        Commonwealth Scientific \& Industrial Research Organisation, Australia\\
-        \email{simon.cox@csiro.au}
-    }
+    % \and 
+    % {
+    %     Commonwealth Scientific \& Industrial Research Organisation, Australia\\
+    %     \email{simon.cox@csiro.au}
+    % }
 }
 
 \maketitle
 
 \begin{abstract}
-The Open Geospatial Consortium published the GeoSPARQL 1.0 standard in 2012 containing multiple 
-parts that define ``SPARQL extension functions'', ``RIF rules'', ``an RDF/OWL ontology for 
-information based on the General Feature Model'' and supporting vocabularies, all for Semantic 
-Web spatial data.
+In 2012 the Open Geospatial Consortium published GeoSPARQL 
+defining ``SPARQL extension functions'', ``RIF rules'', ``and RDF/OWL ontology for 
+[spatial] information'' and supporting vocabularies.\\
 
 In the 8+ years since its publication, GeoSPARQL has become the most important spatial Semantic 
 Web standard, as judged by references to it in other Semantic Web standards and its wide use in 
-Semantic Web data.
+Semantic Web data.\\
 
 An update to the standard was proposed in 2019 to deliver GeoSPARQL 1.1 in 2021 with a charter to: 
-handle outstanding change requests and source new ones from the GeoSPARQL user community as well 
+handle outstanding change requests and source new ones from the user community and 
 to ``better present'' the standard, that is to better link all the standard’s parts and better 
-document \& exemplify elements. Expected updates included possible alignments to other ontologies, 
-possible handling of new spatial referencing systems, new geometry representations, and new artifact 
-presentation.
+document \& exemplify elements. Expected updates included alignments to other ontologies, 
+handling of new spatial referencing systems, new geometry representations, and new artifact 
+presentation.\\
 
 In this paper, we will discuss the submitted change requests and resulting updates to the standard. 
 We will also discuss the theory behind updates and our expectations for GeoSPARQL 1.1's use.
@@ -67,39 +66,39 @@ We will also discuss the theory behind updates and our expectations for GeoSPARQ
 
 
 \section{Introduction}\label{sec:introduction}
-The GeoSPARQL standard, first issues in 2021 by the Open Geospatial Consortium (OGC)\footnote{\url{https://www.ogc.org}} 
+The GeoSPARQL standard, issued in 2012 by the Open Geospatial Consortium (OGC)\footnote{\url{https://www.ogc.org}} 
 is one of, if not the most\footnote{It's hard to calculate use but references to GeoSPARQL other well-known standards, 
-such as DCAT2 (\url{https://www.w3.org/TR/vocab-dcat/}) suggests this}, used \textit{Sematic Web} ontologies for 
-representing spatial data.
+such as DCAT2 (\url{https://www.w3.org/TR/vocab-dcat/}) suggests this}, used \textit{Sematic Web} standards for 
+spatial data.
 
-The original GeoSPARQL release, which we refer to as GeoSPARQL 1.0, contained a \textit{specification} document,
+The original release - GeoSPARQL 1.0 - contained a \textit{specification} document,
 a main ``GeoSPARQL'' ontology in an RDF file and a ``Simple Features Vocabulary'' ontology also in an RDF file. The 
 ``GeoSPARQL'' ontology content, as well as lists of geospatial functions that could be performed on RDF data via 
-SPARQL\footnote{\url{https://www.w3.org/TR/sparql11-query/}} queries was defined in the specification document, as
+SPARQL\footnote{\url{https://www.w3.org/TR/sparql11-query/}} queries were defined in the specification document, as
 were entailment rules and requirements \& abstract tests for testing ontology data and function implementations. 
-Within the last few years, the function lists from the specification were extracted into a SKOS\footnote{\url{https://www.w3.org/TR/skos-reference/}}
-vocabulary.
+Function lists from the specification have been extracted into SKOS\footnote{\url{https://www.w3.org/TR/skos-reference/}}
+vocabularies.
 
 
 \section{Motivation to update GeoSPARQL}\label{sec:motivation}
-The Open Geospatial Consortium (OGC) \& World Wide Web Consortium's (W3C) \textit{Spatial Data On The Web Working Group}
+The OGC \& World Wide Web Consortium's (W3C) \textit{Spatial Data On The Web Working Group}
 (SDWWG) established \textit{Spatial Data On The Web Best Practices}\cite{van_den_brink_best_2018} which noted 
-shortcomings with then current spatial data standards such as ``A best practice for returning geometries in a 
+shortcomings with then current spatial data standards: ``A best practice for returning geometries in a 
 specific requested CRS has not yet emerged''. The group also informally captured specific suggested updates for 
 GeoSPARQL\footnote{\url{https://www.w3.org/2015/spatial/wiki/Further_development_of_GeoSPARQL}}, however no updates 
-to GeoSPARQL were ultimately made by that Working Group.
+to GeoSPARQL were then made.
 
 Recently, 2019, the OGC reconstituted a \textit{GeoSPARQL Standards Working Group} (SWG) to update GeoSPARQL. The general 
 motivation for work within the area of GeoSPARQL, that of \textit{Semantic Web} spatial data, and a series of
 fault fixes and proposed extensions to GeoSPARQL 1.0 are captured in an OGC White Paper \cite{geosparqlwhitepaper}. Some,
-but not all of the SDWWG's ideas have been taken up by the SDW, for example the \textit{Best Practices}~\cite{van_den_brink_best_2018}
+but not all, of the SDWWG's ideas have been taken up by the SDW, for example the \textit{Best Practices}~\cite{van_den_brink_best_2018}
 aspiration that ``A possible way forward is an update for the GeoSPARQL spatial ontology. This would provide an 
 agreed spatial ontology, i.e., a bridge or common ground between geographical and non-geographical spatial data...''.
 This point has been considered by the SWG and included in future releases' scope. 
 
 Another \textit{Best Practices} issue raised is that ``it makes sense to publish different geometric representations 
-of a spatial object that can be used for different purposes'', again, this is being considered by the SWG with initial
-thoughts cenetering on defining \textit{roles} of geometries with respect to features.
+of a spatial object that can be used for different purposes''. This is being considered by the SWG with initial
+thoughts centering on defining \textit{roles} of geometries with respect to features.
 
 The SWG's charter - its final scope of work - is also published by the OGC \cite{abhayaratna2020ogc} and this guides 
 the SWG's activities. Specific actions of the SWG and their staging are explained through the use of a publicly-available 
@@ -222,10 +221,10 @@ An example of a point's GeoJSON geometry serialization is given below, followed 
 \end{lstlisting}
 \normalsize
 
-The first two of these new serializations have been much anticipated and were requested by the SDWWG and many users of 
+GeoJSON \& KML have been much anticipated and were requested by the SDWWG and many users of 
 GeoSPARQL, due to those formats' popularity.
 
-The third new serialization format is more forward-looking in that it is not driven by user demand but by predicted demand.
+The DGGS format is more forward-looking in that it is not driven by user demand but by predicted demand.
 DGGS does not have a single, concrete format standard as the others do, nor is it ever likely to - different DGGSes will 
 likely implement very different data formats - so GeoSAPRQL 1.1 makes generalized provisions for DGGS serializations but 
 presents no detailed requirements for them, only stating that the specific DGGS must be identified.
@@ -261,23 +260,20 @@ WHERE {
 \end{lstlisting}
 \normalsize
 
-New functions to retrieve the minimum and maximum values of geometries' coordinates are also added: \href{http://www.opengis.net/def/function/geosparql/minX}{\emph{geof:minX}} \& \href{http://www.opengis.net/def/function/geosparql/maxX}{\emph{geof:maxX}},
+Functions to retrieve min/max values of geometries' coordinates are added: \href{http://www.opengis.net/def/function/geosparql/minX}{\emph{geof:minX}} \& \href{http://www.opengis.net/def/function/geosparql/maxX}{\emph{geof:maxX}},
 \href{http://www.opengis.net/def/function/geosparql/minY}{\emph{geof:minY}} \& \href{http://www.opengis.net/def/function/geosparql/maxY}{\emph{geof:maxY}} and \href{http://www.opengis.net/def/function/geosparql/minZ}{\emph{geof:minZ}} \& \href{http://www.opengis.net/def/function/geosparql/maxZ}{\emph{geof:maxZ}}.
 
 \subsection{Ontology extensions}\label{sec:ontexts}
-Figure~\ref{fig:geosparql11ontology} overviews the ontology, as 
-of release 1.1.
-
-GeoSPARQL 1.1 extends the GeoSPARQL ontology by adding a new class, \href{http://www.opengis.net/ont/geosparql#SpatialMeasure}{\texttt{geo:SpatialMeasure}}. This class represents a spatial measurement 
+GeoSPARQL 1.1 - see Figure~\ref{fig:geosparql11ontology} for an overview - extends the GeoSPARQL ontology by adding a new class, \href{http://www.opengis.net/ont/geosparql#SpatialMeasure}{\texttt{geo:SpatialMeasure}}. This class represents a spatial measurement 
 such as a volume, length, or area associated with a measurement amount and a unit of measure. It is the range of three newly-defined properties:
 \href{http://www.opengis.net/ont/geosparql#hasArea}{\texttt{geo:hasArea}}, \href{http://www.opengis.net/ont/geosparql#hasLength}{\texttt{geo:hasLength}} and \href{http://www.opengis.net/ont/geosparql#hasVolume}{\texttt{geo:hasVolume}} which make these attributes of a geometry better accessible using 
 SPARQL. 
 
-These additions address a number of change requests from the SDWWG and the SWG but, given the introduction of a dedicated \textit{measure} class, 
-the do more than just provide for a few scalar spatial measures and open up GeoSPARQL to general patterns of measurement present in ontologies 
+These additions address a several requests from the SDWWG \& SWG but, given the introduction of a dedicated \textit{measure} class, 
+do more too: they open up GeoSPARQL to general patterns of measurement present in ontologies 
 such as the W3C's \textit{SOSA}~\cite{haller_semantic_2017}.
 
-The 1.1 release also adds the property \href{http://www.opengis.net/def/function/geosparql/inSRS}{\texttt{geo:inSRS}}, which allows declarations of a geometry's SRS, independent of serializations. It paves the way 
+The 1.1 release also adds the property \href{http://www.opengis.net/def/function/geosparql/inSRS}{\texttt{geo:inSRS}}, which allows declarations of a geometry's SRS, independent of serializations which paves the way 
 for future definition of SRSes in RDF, as anticipated for GeoSPARQL 2.0.
 
 \begin{figure}[htb]
@@ -288,7 +284,7 @@ for future definition of SRSes in RDF, as anticipated for GeoSPARQL 2.0.
 \end{figure}
 
 \section{Conclusions}\label{sec:conclusions}
-An staged schedule of updates to this very important \textit{Semantic Web} spatial data standard has been initiated with simple, objvious and strictly backwards-compatable changes now in progress for GeoSPARQL 1.1. 1.2 will include more detailed work later in 2021 and 2.0, as yet un-specified, might be a somewhat different stanandard, to be determined by more requirements gathering and feedback on the 1.1 and 1.2 releases.
+A staged schedule of updates to this important \textit{Semantic Web} spatial standard has been initiated with simple and strictly backwards-compatable changes now in GeoSPARQL 1.1. 1.2 will include more detailed work later in 2021 and 2.0, as yet un-specified, might be somewhat different: to be determined by more requirements gathering and feedback on the 1.1 and 1.2 releases.
 
 \subsection{Future Work}\label{sec:futurework}
 \begin{itemize}
