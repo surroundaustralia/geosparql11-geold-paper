@@ -15,7 +15,7 @@
 
 \author{
     Nicholas J. Car\inst{1}\orcidID{0000-0002-8742-7730} \and \\
-    Timo Homburg\inst{2}\orcidID{0000-0002-9499-5840}\\
+    Timo Homburg\inst{2}\orcidID{0000-0002-9499-5840}
 %    Simon J.D Cox\inst{3}\orcidID{0000-0002-3884-3420}
 }
 
@@ -82,7 +82,7 @@ vocabularies.
 
 \section{Motivation to update GeoSPARQL}\label{sec:motivation}
 The OGC \& World Wide Web Consortium's (W3C) \textit{Spatial Data On The Web Working Group}
-(SDWWG) established \textit{Spatial Data On The Web Best Practices}\cite{van_den_brink_best_2018} which noted 
+(SDWWG) established \textit{Spatial Data On The Web Best Practices}~\cite{van_den_brink_best_2018} which noted 
 shortcomings with then current spatial data standards: ``A best practice for returning geometries in a 
 specific requested CRS has not yet emerged''. The group also informally captured specific suggested updates for 
 GeoSPARQL\footnote{\url{https://www.w3.org/2015/spatial/wiki/Further_development_of_GeoSPARQL}}, however no updates 
@@ -90,7 +90,7 @@ to GeoSPARQL were then made.
 
 Recently, 2019, the OGC reconstituted a \textit{GeoSPARQL Standards Working Group} (SWG) to update GeoSPARQL. The general 
 motivation for work within the area of GeoSPARQL, that of \textit{Semantic Web} spatial data, and a series of
-fault fixes and proposed extensions to GeoSPARQL 1.0 are captured in an OGC White Paper \cite{geosparqlwhitepaper}. Some,
+fault fixes and proposed extensions to GeoSPARQL 1.0 are captured in an OGC White Paper~\cite{geosparqlwhitepaper}. Some,
 but not all, of the SDWWG's ideas have been taken up by the SDW, for example the \textit{Best Practices}~\cite{van_den_brink_best_2018}
 aspiration that ``A possible way forward is an update for the GeoSPARQL spatial ontology. This would provide an 
 agreed spatial ontology, i.e., a bridge or common ground between geographical and non-geographical spatial data...''.
@@ -100,7 +100,7 @@ Another \textit{Best Practices} issue raised is that ``it makes sense to publish
 of a spatial object that can be used for different purposes''. This is being considered by the SWG with initial
 thoughts centering on defining \textit{roles} of geometries with respect to features.
 
-The SWG's charter - its final scope of work - is also published by the OGC \cite{abhayaratna2020ogc} and this guides 
+The SWG's charter - its final scope of work - is also published by the OGC~\cite{abhayaratna2020ogc} and this guides 
 the SWG's activities. Specific actions of the SWG and their staging are explained through the use of a publicly-available 
 online task tracking system within the SWG's working online code repository\footnote{\url{https://github.com/opengeospatial/ogc-geosparql/projects/1}}.
 
@@ -134,11 +134,11 @@ The SWG's \textit{Charter}, anticipating that the more obvious updates such as n
 be implemented, listed the following areas of investigation that emerged from SWG proponent's discussions:
 
 \begin{itemize}
-    \item[$\ast$] a revision of the ``upper  ontology'' structuring of GeoSPARQL
+    \item[$\ast$] a revision of the ``upper ontology'' structuring of GeoSPARQL
     \begin{itemize}
         \item[$-$] better/differently defining how GeoSPARQL's \texttt{Feature} and other classes relate to one another and to other fundamental concepts in the ontology
     \end{itemize} 
-    \item[$\ast$] alignments to other ontologies, perhaps \textit{W3C Time Ontology in OWL}\cite{simon_cox_time_2017}
+    \item[$\ast$] alignments to other ontologies, perhaps \textit{W3C Time Ontology in OWL}~\cite{simon_cox_time_2017}
     \item[$\ast$] catering for very different SRSes, such as Discrete Global Grid Systems
 \end{itemize}
 
@@ -174,15 +174,16 @@ many 1.1 requests which are the only ons we report here. The next sections fores
 
 \subsection{Profile Declaration}\label{sec:profiledec}
 One of the first actions undertaken by the SWG was to link the GeoSPARQL 1.0 elements through a \textit{profile} 
-declaration, where a profile is a special type of \textit{specification}, as defined by \textit{The Profiles Vocabulary}\cite{atkinson_profiles_2020}. 
+declaration, where a profile is a special type of \textit{specification}, as defined by \textit{The Profiles Vocabulary}~\cite{atkinson_profiles_2020}. 
 The specific motivation for this was the SWG's recognition that GeoSPARQL 1.0 consisted of multiple parts, not all
 of which were easy to discover. As a result, some GeoSPARQL users were unaware of some of the resources and some
 resources were accidentally duplicated or partly re-implemented. Profile declarations of this sort are anticipated, by the OGC, 
 as being the \textit{best practice} way for it to deliver multi-part standards.
 
 The profile declaration for GeoSPARQL 1.0 will be published by the OGC as a stand-alone resource sometime in early 2021 along with some 
-updated GeoSPARQL 1.0 resources. The profile declaration for GeoSPARQL 1.1 will be published at the same time as all, or most, of the 
-1.1 releases' updated resources, currently expected in mid-2021. The 1.1 releases' resources are:
+updated GeoSPARQL 1.0 resources. The profile declaration for GeoSPARQL 1.1 will be published at the same time as the 
+1.1 releases, currently expected in mid-2021. All 1.0 and 1.1 relase resources are currently available in draft form 
+in the SWG's online code repository\footnote{\url{https://github.com/opengeospatial/ogc-geosparql}}. The 1.1 releases' resources are:
 
 \begin{enumerate}
     \item a profile declaration
@@ -190,19 +191,18 @@ updated GeoSPARQL 1.0 resources. The profile declaration for GeoSPARQL 1.1 will 
     \item an RDF/OWL ontology document
     \item a Functions \& Rules vocabulary, derived from the ontology
     \item a Simple Features feature types vocabulary
-    \item a set of RIF\cite{kifer2013rif} rules
-    \item SHACL\cite{knublauch_shapes_2017} shapes for RDF data validation 
+    \item a set of RIF~\cite{kifer2013rif} rules
+    \item SHACL~\cite{knublauch_shapes_2017} shapes for RDF data validation 
 \end{enumerate}
 
-Both the 1.0 and the 1.1 resources are currently available from the SWG's online code repository\footnote{\url{https://github.com/opengeospatial/ogc-geosparql}}.
 
 \subsection{New geometry literals}\label{sec:newliterals}
 Three new geometry serializations are introduced: 
 
 \begin{enumerate}
-    \item \textbf{GeoJSON} (Geo- JavaScript Object Notation)\cite{butler2016geojson}
-    \item \textbf{KML} (Keyhole Markup Language)\cite{nolan2014keyhole} 
-    \item \textbf{DGGS} (Discrete Global Grid System)\cite{sahr1998discrete}
+    \item \textbf{GeoJSON} (Geo- JavaScript Object Notation)~\cite{butler2016geojson}
+    \item \textbf{KML} (Keyhole Markup Language)~\cite{nolan2014keyhole} 
+    \item \textbf{DGGS} (Discrete Global Grid System)~\cite{sahr1998discrete}
 \end{enumerate} 
 
 An example of a point's GeoJSON geometry serialization is given below, followed by an unrelated simple polygon \textit{AusPIX}
@@ -239,14 +239,14 @@ certainly possible outside of a semantic database, and thus GeoSPARQL, the inclu
 
 \begin{enumerate}
     \item No client-side library is needed to create an aggregated geometry result
-    \item Fewer and more appropriate results can be returned using a spatial aggregate function (for example, a union geometry result)
-    \item Spatial aggregates from different SPARQL endpoints can easily be calculated using federated queries 
+    \item Fewer/more appropriate results returned, for example a union result
+    \item Federated SPARQL queries can aggregate results from multiple endpoints
 \end{enumerate}
 
-In addition to the \href{http://www.opengis.net/def/function/geosparql/union}{\emph{geof:union}}, \href{http://www.opengis.net/def/function/geosparql/envelope}{\emph{geof:envelope}} and \href{http://www.opengis.net/def/function/geosparql/convexHull}{\emph{geof:convexHull}} functions already defined in GeoSPARQL 1.0, 
-for use within SPARQL \texttt{FILTER} operations, GeoSPARQL 1.1 defines \emph{geosf:Union}, \emph{geosf:Envelope} and \emph{geosf:ConvexHull}
+In addition to \href{http://www.opengis.net/def/function/geosparql/union}{\emph{geof:union}}, \href{http://www.opengis.net/def/function/geosparql/envelope}{\emph{geof:envelope}} and \href{http://www.opengis.net/def/function/geosparql/convexHull}{\emph{geof:convexHull}} defined in GeoSPARQL 1.0 
+for use within SPARQL \texttt{FILTER} operations, 1.1 defines \emph{geosf:Union}, \emph{geosf:Envelope} and \emph{geosf:ConvexHull}
 as well as \emph{geosf:BoundingCircle}, \emph{geosf:Centroid}, \emph{geosf:ConcatLines} - concatenating a set of overlapping linestrings 
-that overlap - and \emph{geosf:ConcaveHull} that can be used to return aggregated results. Listing~\ref{lst:agfunc} gives an example 
+that overlap - and \emph{geosf:ConcaveHull} that can return aggregated results. Listing~\ref{lst:agfunc} gives an example 
 of one of these new functions in use.
 % \todo[inline]{Timo: I will create a pull request in the GeoSPARQL repository to clear up the issues concerning the spatial aggregate functions. Then I will update the namespaces here. I would find it nice to also include the functions we have discussed yesterday: transformation of SRS and in between literal formats. Should we mention it here as future work or should we make a draft pull request for that so that people have a reference? I think the latter}
 \small
@@ -269,12 +269,11 @@ such as a volume, length, or area associated with a measurement amount and a uni
 \href{http://www.opengis.net/ont/geosparql#hasArea}{\texttt{geo:hasArea}}, \href{http://www.opengis.net/ont/geosparql#hasLength}{\texttt{geo:hasLength}} and \href{http://www.opengis.net/ont/geosparql#hasVolume}{\texttt{geo:hasVolume}} which make these attributes of a geometry better accessible using 
 SPARQL. 
 
-These additions address a several requests from the SDWWG \& SWG but, given the introduction of a dedicated \textit{measure} class, 
+These additions address requests from the SDWWG \& SWG but
 do more too: they open up GeoSPARQL to general patterns of measurement present in ontologies 
-such as the W3C's \textit{SOSA}~\cite{haller_semantic_2017}.
-
-The 1.1 release also adds the property \href{http://www.opengis.net/def/function/geosparql/inSRS}{\texttt{geo:inSRS}}, which allows declarations of a geometry's SRS, independent of serializations which paves the way 
-for future definition of SRSes in RDF, as anticipated for GeoSPARQL 2.0.
+such as the W3C's \textit{SOSA}~\cite{haller_semantic_2017}. Similarly, 
+the 1.1 release addition of property \href{http://www.opengis.net/def/function/geosparql/inSRS}{\texttt{geo:inSRS}}, allows declarations of a geometry's SRS, independent of serializations and paves the way 
+for future definition of SRSes in RDF, anticipated for GeoSPARQL 2.0.
 
 \begin{figure}[htb]
     \centering
