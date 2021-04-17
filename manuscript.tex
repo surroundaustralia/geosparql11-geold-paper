@@ -77,6 +77,8 @@ were entailment rules and requirements \& abstract tests for testing ontology da
 Function lists from the specification have been extracted into SKOS\footnote{\url{https://www.w3.org/TR/skos-reference/}}
 vocabularies.
 
+In this publication we discuss the motivations behind updating GeoSPARQL 1.0 in \Cref{sec:motivation}, the content of the planned updates for the upcoming GeoSPARQL 1.1 release in \Cref{sec:newfeatures} and finally in \Cref{sec:conclusions} provide an outlook to further feature requests which are likely to be tackled in future GeoSPARQL 1.2 and 2.0 releases.
+
 
 \section{Motivation to update GeoSPARQL}\label{sec:motivation}
 The OGC \& World Wide Web Consortium's (W3C) \textit{Spatial Data On The Web Working Group}
@@ -107,7 +109,7 @@ At a high-level, proposed updates to GeoSPARQL by both the SDWWG and the SWG may
 \begin{itemize}
     \item[$\ast$] new geometry serializations
     \begin{itemize}
-        \item[$-$] GeoJSON, KML etc. Newer, popular formats
+        \item[$-$] GeoJSON, KML and other popular formats
     \end{itemize} 
     \item[$\ast$] new ontology classes to cater for more nuanced spatial information
     \item[$\ast$] more spatial functions
@@ -159,7 +161,7 @@ and fundamental ontology elements in GeoSPARQL either could or should be remodel
 time of this paper, however initial SWG attendees' intuition is that a future GeoSPARQL 2.0 might generalise spatial concepts and
 move away from only, or primarily, \textit{geo}spatial, or perhaps focus not just on \texttt{Feature}/\texttt{Geometry} relations
 but look to generalised mechanisms for describing dimensions of features of which \textit{geometry} is one of many (and perhaps)
-\textit{temporality} too).
+\textit{temporality} too.
 
 An originally unforseen area of updates to GeoSPARQL is new modes of standard presentation. Motivatied by conceptual work within the W3C and the OGC for  
 multi-part standards presentation, this has resulted in profile declarations, explained 
@@ -242,8 +244,8 @@ certainly possible outside of a semantic database, and thus GeoSPARQL, the inclu
 \end{enumerate}
 
 In addition to \href{http://www.opengis.net/def/function/geosparql/union}{\emph{geof:union}}, \href{http://www.opengis.net/def/function/geosparql/envelope}{\emph{geof:envelope}} and \href{http://www.opengis.net/def/function/geosparql/convexHull}{\emph{geof:convexHull}} defined in GeoSPARQL 1.0 
-for use within SPARQL \texttt{FILTER} operations, 1.1 defines \emph{geosf:Union}, \emph{geosf:Envelope} and \emph{geosf:ConvexHull}
-as well as \emph{geosf:BoundingCircle}, \emph{geosf:Centroid}, \emph{geosf:ConcatLines} - concatenating a set of overlapping linestrings 
+for use within SPARQL \texttt{FILTER} operations, 1.1 defines \href{http://www.opengis.net/def/function/geosparql/union2}{\emph{geof:union2}} and 
+as well as \href{http://www.opengis.net/def/function/geosparql/boundingCircle}{\emph{geof:boundingCircle}}, \href{http://www.opengis.net/def/function/geosparql/centroid}{\emph{geof:centroid}}, \href{http://www.opengis.net/def/function/geosparql/concatLines}{\emph{geof:ConcatLines}} - concatenating a set of overlapping linestrings 
 that overlap - and \emph{geosf:ConcaveHull} that can return aggregated results. Listing~\ref{lst:agfunc} gives an example 
 of one of these new functions in use.
 % \todo[inline]{Timo: I will create a pull request in the GeoSPARQL repository to clear up the issues concerning the spatial aggregate functions. Then I will update the namespaces here. I would find it nice to also include the functions we have discussed yesterday: transformation of SRS and in between literal formats. Should we mention it here as future work or should we make a draft pull request for that so that people have a reference? I think the latter}
@@ -251,7 +253,7 @@ of one of these new functions in use.
 \begin{lstlisting}[caption=Aggregation Function example SPARQL query,label=lst:agfunc,language=sql,frame=single,basicstyle=\ttfamily,showstringspaces=false]
 # returns the circle geometry bounding all the geometries 
 # of Feature <x>
-SELECT (geosaf:BoundingCircle(?geo) AS ?circ)
+SELECT (geof:BoundingCircle(?geo) AS ?circ)
 WHERE {
     <x> geo:hasGeometry/geo:asWKT ?geo .
 }
@@ -280,7 +282,7 @@ for future definition of SRSes in RDF, anticipated for GeoSPARQL 2.0.
     \label{fig:geosparql11ontology}
 \end{figure}
 
-\section{Conclusions}\label{sec:conclusions}
+\section{Conclusions and Outlook}\label{sec:conclusions}
 A staged schedule of updates to this important \textit{Semantic Web} spatial standard has been initiated with simple and strictly backwards-compatible changes now in GeoSPARQL 1.1. Features discussed for GeoSPARQL 1.2 include the formalization of coordinate reference systems in RDF, the depiction of accurracies and level of detail and the addition of further - possibly also binary - literal types. Work on GeoSPARQL 1.2 will start later in 2021. GeoSPARQL 2.0, as yet un-specified, is likely to introduce more substantial changes to the standard. Changes proposed for GeoSPARQL 2.0 include to broaden the scope of GeoSPARQL to further kinds of spatial data. To that end, full-featured support for 3D geometries and support for coverages are discussed on the level of data representations. These proposals are related to some growing interest in the semantic web community in representing further geospatial data related to building modeling information \cite{zhang2018bimsparql} and coverage data \cite{homburg2020geosparql+}. More requirements might also be introduced once feedback has been received from the GeoSPARQL 1.1 and 1.2 releases.
 
 %
