@@ -233,7 +233,7 @@ presents no detailed requirements for them, only stating that the specific DGGS 
 While spatial aggregation functions are the norm in many non-semantic geospatial databases such as PostGIS or Oracle Spatial, 
 at the time of defining the GeoSPARQL 1.0 standard, aggregation functions had not yet been introduced into the SPARQL standard,
 but have been with SPARQL 1.1~\cite{w3c_sparql_working_group_sparql_2013}. Spatial aggregation functions 
-similar to traditional (relation database), aggregation functions such as AVG, MAX, or MIN allow aggregated results of geometry 
+similar to traditional (relational database), aggregation functions such as AVG, MAX, or MIN allow aggregated results of geometry 
 queries, for example, to create the union of a set of selected serialized geometries. While calculating these aggregates is 
 certainly possible outside of a semantic database, and thus GeoSPARQL, the inclusion of the functions provides distinct advantages:
 
@@ -248,6 +248,7 @@ for use within SPARQL \texttt{FILTER} operations, 1.1 defines \href{http://www.o
 as well as \href{http://www.opengis.net/def/function/geosparql/boundingCircle}{\emph{geof:boundingCircle}}, \href{http://www.opengis.net/def/function/geosparql/centroid}{\emph{geof:centroid}}, \href{http://www.opengis.net/def/function/geosparql/concatLines}{\emph{geof:ConcatLines}} - concatenating a set of overlapping linestrings 
 that overlap - and \emph{geosf:ConcaveHull} that can return aggregated results. Listing~\ref{lst:agfunc} gives an example 
 of one of these new functions in use.
+
 % \todo[inline]{Timo: I will create a pull request in the GeoSPARQL repository to clear up the issues concerning the spatial aggregate functions. Then I will update the namespaces here. I would find it nice to also include the functions we have discussed yesterday: transformation of SRS and in between literal formats. Should we mention it here as future work or should we make a draft pull request for that so that people have a reference? I think the latter}
 \small
 \begin{lstlisting}[caption=Aggregation Function example SPARQL query,label=lst:agfunc,language=sql,frame=single,basicstyle=\ttfamily,showstringspaces=false]
@@ -262,6 +263,8 @@ WHERE {
 
 Functions to retrieve min/max values of geometries' coordinates are added: \href{http://www.opengis.net/def/function/geosparql/minX}{\emph{geof:minX}} \& \href{http://www.opengis.net/def/function/geosparql/maxX}{\emph{geof:maxX}},
 \href{http://www.opengis.net/def/function/geosparql/minY}{\emph{geof:minY}} \& \href{http://www.opengis.net/def/function/geosparql/maxY}{\emph{geof:maxY}} and \href{http://www.opengis.net/def/function/geosparql/minZ}{\emph{geof:minZ}} \& \href{http://www.opengis.net/def/function/geosparql/maxZ}{\emph{geof:maxZ}}.
+
+In parallel, the OGC API Features standard \cite{ogcapifeaturespart3} is developed, which also proposes functions for filtering feature collections. Even though, OGC API Features proposes the use of the Common Query Language (CQL) for filtering, it is open to other query language implementations such as GeoSPARQL. When comparing the filter capabilities of CQL to GeoSPARQL, one can observe that concerning spatial filter capabilities, the two query languages provide comparable functionality. However, the version of CQL proposed by OGC API Features also provides support of spatiotemporal operators, which may be an addition to be further explored in the contiuous GeoSPARQL development process.
 
 \subsection{Ontology extensions}\label{sec:ontexts}
 GeoSPARQL 1.1 - see Figure~\ref{fig:geosparql11ontology} for an overview - extends the GeoSPARQL ontology by adding a new class, \href{http://www.opengis.net/ont/geosparql#SpatialMeasure}{\texttt{geo:SpatialMeasure}}. This class represents a spatial measurement 
