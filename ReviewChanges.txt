@@ -1,0 +1,31 @@
+Review Changes
+----------------
+
+- The sentence of footnote 4 is not clear, it should be rephrased
+    - we have repheased it
+- "Recently, 2019, ..." should become "Recently, in 2019, ..."
+    - updated
+- "GeoJSON, KML itc. Newer, popular format" should be rephrased
+    - we have rephrased
+- "many (and perhaps) temporality too)." should be corrected
+    - whole sentense rephrased
+- "which are the only ons we report here" should become "which are the only ones we report here"
+    - spelling corrected
+- "All 1.0 and 1.1 relase resources" should become "All 1.0 and 1.1 release resources"
+    - spelling corrected
+- A critical analysis by the authors of the relationships between the query/filtering functionalities in GeoSPARQL vs OGC API Feature part 3 would have been interesting.
+    - we have added a paragraph that describes OGC Features filtering and how it and GeoSPARQL are similar & different
+- The paper is only loosely structured and would benefit from some additional context from a new paragraph at the end of the introduction describing the contents.
+    - we have added such a paragraph
+- Section 3 should be updated as it is strange to see reference to the present time being June 2020 ie "So far (as of June, 2020)", the discussion should be updated to the current time.
+    - date updated
+- The LNCS template is not fully adhered to as asterisks are used instead of bullets.
+    - we have change the asterisks to LSNS normal style
+- Minor Formatting issues to be fixed:
+  - Sec 2, bullet 1, typo itc->etc
+      - done
+  - Sec 3, para 1 , typo ons->ones
+      - done
+
+
+We have addressed all the itemised points raised by the three reviewers
