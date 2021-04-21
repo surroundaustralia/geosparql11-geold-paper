@@ -66,8 +66,8 @@ We will also discuss the theory behind updates and our expectations for GeoSPARQ
 
 \section{Introduction}\label{sec:introduction}
 The GeoSPARQL standard, issued in 2012 by the Open Geospatial Consortium (OGC)\footnote{\url{https://www.ogc.org}} 
-is one of, if not the most, popular \textit{Semantic Web} standards for spatial data.\footnote{References to GeoSPARQL other well-known standards, 
-such as DCAT2 (\url{https://www.w3.org/TR/vocab-dcat/}) or CIDOC-CRM \cite{doerr2013crmgeo} suggests this, as do the incoming links in Linked Open Vocabularies \url{https://lov.linkeddata.es/dataset/lov/vocabs/gsp} and the list of implementers that includes most of the popular triplestore vendors, a list of which has been compiled here: \url{https://github.com/opengeospatial/ogc-geosparql/issues/59}}
+is one of, if not the most, popular \textit{Semantic Web} standards for spatial data.\footnote{References to GeoSPARQL in other well-known standards, 
+such as DCAT2 (\url{https://www.w3.org/TR/vocab-dcat/}) and CIDOC-CRM \cite{doerr2013crmgeo} suggests it is popular, as do the incoming links in Linked Open Vocabularies \url{https://lov.linkeddata.es/dataset/lov/vocabs/gsp} and the list of implementers that includes most of the popular triplestore vendors, a list of which has been compiled here: \url{https://github.com/opengeospatial/ogc-geosparql/issues/59}}
 
 The original release - GeoSPARQL 1.0 - contained a \textit{specification} document,
 a main ``GeoSPARQL'' ontology in an RDF file and a ``Simple Features Vocabulary'' ontology also in an RDF file. The 
@@ -105,24 +105,24 @@ online task tracking system within the SWG's working online code repository\foot
 At a high-level, proposed updates to GeoSPARQL by both the SDWWG and the SWG may be categorised as one of the following:
 
 \begin{itemize}
-    \item[$\ast$] new geometry serializations
+    \item new geometry serializations
     \begin{itemize}
         \item[$-$] GeoJSON, KML etc. Newer, popular formats
     \end{itemize} 
-    \item[$\ast$] new ontology classes to cater for more nuanced spatial information
-    \item[$\ast$] more spatial functions
+    \item new ontology classes to cater for more nuanced spatial information
+    \item more spatial functions
     \begin{itemize}
         \item[$-$] implementing functions well-known in non \texttt{Semantic Web} spatial systems
     \end{itemize} 
-    \item[$\ast$] scalar spatial properties 
+    \item scalar spatial properties 
     \begin{itemize}
         \item[$-$] area, volume etc. alongside geometries
     \end{itemize} 
-    \item[$\ast$] better handling of Spatial (Coordinate) Reference Systems (SRS)
+    \item better handling of Spatial (Coordinate) Reference Systems (SRS)
     \begin{itemize}
         \item[$-$] potentially allowing for automated coordinate serialization conversions
     \end{itemize} 
-    \item[$\ast$] Internet protocol-based selection of different geometries for features
+    \item Internet protocol-based selection of different geometries for features
 \end{itemize}
 
 Some of these proposed updates were predicted in GeoSPARQL 1.0, with the \textit{Future Work} section listing several of the 
@@ -132,12 +132,12 @@ The SWG's \textit{Charter}, anticipating that the more obvious updates such as n
 be implemented, listed the following areas of investigation that emerged from SWG proponent's discussions:
 
 \begin{itemize}
-    \item[$\ast$] a revision of the ``upper ontology'' structuring of GeoSPARQL
+    \item a revision of the ``upper ontology'' structuring of GeoSPARQL
     \begin{itemize}
         \item[$-$] better/differently defining how GeoSPARQL's \texttt{Feature} and other classes relate to one another and to other fundamental concepts in the ontology
     \end{itemize} 
-    \item[$\ast$] alignments to other ontologies, perhaps \textit{W3C Time Ontology in OWL}~\cite{simon_cox_time_2017}
-    \item[$\ast$] catering for very different SRSes, such as Discrete Global Grid Systems
+    \item alignments to other ontologies, perhaps \textit{W3C Time Ontology in OWL}~\cite{simon_cox_time_2017}
+    \item catering for very different SRSes, such as Discrete Global Grid Systems
 \end{itemize}
 
 Specifically ruled out of scope was any investigation of property graphs. Recent (last several years) discussion in the OGC and 
@@ -148,9 +148,9 @@ be important for future \textit{Semantic Web} spatial data systems, there was mo
 After initial meetings, the SWG determined to make multiple releases of GeoSPARQL updates with different goals:
 
 \begin{itemize}
-    \item[$\ast$] \textbf{1.1}: extensions that are fully compatible with GeoSPARQL 1.0
-    \item[$\ast$] \textbf{1.2}: fully or mostly compatible extensions but which are larger additions to the standard's conceptual coverage
-    \item[$\ast$] \textbf{2.0}: a future GeoSPARQL that might be quite different and partly incompatible with GeoSPARQL 1.0
+    \item \textbf{1.1}: extensions that are fully compatible with GeoSPARQL 1.0
+    \item \textbf{1.2}: fully or mostly compatible extensions but which are larger additions to the standard's conceptual coverage
+    \item \textbf{2.0}: a future GeoSPARQL that might be quite different and partly incompatible with GeoSPARQL 1.0
 \end{itemize} 
 
 The reason for expecting a future, incompatible, GeoSPARQL 2.0 is that early SWG attendees thought spatio-temporal relations
@@ -158,8 +158,8 @@ and fundamental ontology elements in GeoSPARQL either could or should be remodel
 \texttt{Feature}/\texttt{Geometry} class relations. Details of these potential changes haven't been fully expounded, at the 
 time of this paper, however initial SWG attendees' intuition is that a future GeoSPARQL 2.0 might generalise spatial concepts and
 move away from only, or primarily, \textit{geo}spatial, or perhaps focus not just on \texttt{Feature}/\texttt{Geometry} relations
-but look to generalised mechanisms for describing dimensions of features of which \textit{geometry} is one of many (and perhaps)
-\textit{temporality} too).
+but look to generalised mechanisms for describing dimensions of features of which \textit{geometry} is just one of many, and 
+\textit{temporality} might be another.
 
 An originally unforseen area of updates to GeoSPARQL is new modes of standard presentation. Motivatied by conceptual work within the W3C and the OGC for  
 multi-part standards presentation, this has resulted in profile declarations, explained 
@@ -167,7 +167,7 @@ in the next section.
 
 
 \section{Updates in GeoSPARQL 1.1}\label{sec:newfeatures}
-So far (as of June, 2020) the GeoSPARQL SWG has triaged change requests for GeoSPARQL releases and has addressed
+So far (as of April, 2021) the GeoSPARQL SWG has triaged change requests for GeoSPARQL releases and has addressed
 many 1.1 requests which are the only ones we report here. The next sections foreshadow likely 1.2 and 2.0 updates.
 
 \subsection{Profile Declaration}\label{sec:profiledec}
