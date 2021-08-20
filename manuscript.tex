@@ -5,12 +5,21 @@
 \usepackage{listingsutf8}
 \usepackage[hidelinks]{hyperref}
 \usepackage{cleveref}
+\usepackage{tikz}
 
 \renewcommand\UrlFont{\color{blue}\rmfamily}
 
+\newcommand\copyrighttext{%
+  \footnotesize Copyright ©2021 for this paper by its authors. Use permitted under Creative Commons License Attribution 4.0 International (CC BY 4.0).}
+\newcommand\copyrightnotice{%
+\begin{tikzpicture}[remember picture,overlay]
+\node[anchor=south,yshift=10pt] at (current page.south) {\fbox{\parbox{\dimexpr\textwidth-\fboxsep-\fboxrule\relax}{\copyrighttext}}};
+\end{tikzpicture}%
+}
+
 \begin{document}
 
-\title{GeoSPARQL 1.1: an almost decadal update to the most important geospatial LOD standard}
+\title{GeoSPARQL 1.1: An Almost Decadal Update to the Most Important Geospatial LOD Standard}
 \titlerunning{GeoSPARQL 1.1}
 
 \author{
@@ -35,6 +44,8 @@
 }
 
 \maketitle
+
+\copyrightnotice
 
 \begin{abstract}
 In 2012 the Open Geospatial Consortium published GeoSPARQL 
